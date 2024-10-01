@@ -1,0 +1,132 @@
+.mainContainer {
+  border: 2px solid gray;
+  max-width: 700px;
+  margin: 10px auto;
+  border-radius: 20px;
+  padding: 20px 0px;
+}
+
+.title {
+  text-align: center;
+  margin: 0px;
+  border-bottom: 2px solid gray;
+  padding-bottom: 10px;
+}
+
+.buttonContainer {
+  text-align: center;
+  margin-top: 20px;
+  border-bottom: 2px solid gray;
+}
+
+.buttonContainer button {
+  font-size: 18px;
+  margin: 0px 10px;
+  background-color: white;
+  border: none;
+  transition: 0.25s;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
+  &:hover {
+    background-color: darkgray;
+  }
+}
+
+.addTaskContainer {
+  display: none;
+  padding: 10px 20px;
+  border-bottom: 2px solid gray;
+}
+
+.addTaskContainer input {
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid darkgray;
+  font-size: 17px;
+  margin: 10px 0px;
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid gray;
+  }
+}
+
+.addTaskContainerButtons {
+  text-align: center;
+}
+
+.addTaskContainerButtons button {
+  margin: 0px 20px;
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.addTaskContainerButtons .submit {
+  background-color: rgb(3, 166, 3);
+  color: white;
+}
+
+.addTaskContainerButtons .update {
+  background-color: orange;
+  color: white;
+}
+
+.addTaskContainerButtons .closeAddTask {
+  background-color: red;
+  color: white;
+}
+
+.taskContainer .subTitle {
+    padding-left: 20px;
+    font-weight: lighter;
+    margin: 10px;
+}
+
+.tasks {
+  /* border: 1px solid; */
+  padding: 0px 20px;
+}
+
+.tasks .singleTask {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  margin: 10px 0px;
+}
+
+.part1 .name,
+.part1 .description {
+  border-bottom: 1px solid gray;
+  margin: 0px;
+  margin-top: 10px;
+}
+.part1 {
+}
+.part2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.part2 button {
+  font-size: 16px;
+  padding: 5px 7px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+
+.part2 .edit {
+    background-color: orange;
+}
+.part2 .complete {
+    background-color: green;
+}
+.part2 .delete {
+    background-color: darkred;
+}
