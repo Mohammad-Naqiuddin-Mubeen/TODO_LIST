@@ -123,10 +123,13 @@
 
 .part2 .edit {
     background-color: orange;
+    display: block;
 }
 .part2 .complete {
     background-color: green;
+    display: block;
 }
 .part2 .delete {
     background-color: darkred;
+    display: block;
 }

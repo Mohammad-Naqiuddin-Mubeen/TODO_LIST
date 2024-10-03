@@ -7,32 +7,30 @@ const Master = () => {
   const addTaskContainerRef = useRef(null);
   const submitButtonRef = useRef(null);
   const updateButtonRef = useRef(null);
-  const closeButtonRef = useRef(null);
-  const completeButtonRef = useRef(null);
   const editButtonRef = useRef(null);
   const [taskList, setTaskList] = useState([]);
-  const [showCompletedTask, setShowCompletedTask] = useState([]);
-  const [showNotCompletedTask, setShowNotCompletedTask] = useState([]);
   const [taskId, setTaskId] = useState(null);
 
   //   NEW Task Created Here
   const handleAddTask = (e) => {
     e.preventDefault();
     const newTask = {
-      id: Date.now(),
+      id: Date.now(),   // Unique Id For Each Element
       name: nameRef.current.value,
       description: descRef.current.value,
     };
     setTaskList([newTask, ...taskList]);
     nameRef.current.value = null;
     descRef.current.value = null;
+    addTaskContainerRef.current.style.display = "none";
   };
 
+// Delete Function
   const handleDelete = (element) => {
     const updatedList = taskList.filter((ele) => ele !== element);
     setTaskList(updatedList);
   };
-
+// Edit Function
   const handleEdit = (task) => {
     if (
       addTaskContainerRef.current.style.display === "none" ||
@@ -49,7 +47,7 @@ const Master = () => {
     descRef.current.value = task.description;
     setTaskId(task.id);
   };
-
+// Update The New Info
   const handleUpdate = (e) => {
     e.preventDefault();
     const update = taskList.map((ele, ind) => {
@@ -67,6 +65,7 @@ const Master = () => {
     nameRef.current.value = null;
     descRef.current.value = null;
     setTaskId(null);
+    addTaskContainerRef.current.style.display = "none";
   };
 
   //   AddTaskCOntainer
@@ -84,38 +83,12 @@ const Master = () => {
       addTaskContainerRef.current.style.display = "none";
     }
   };
-
-  //   -------------------------------------------------------------
-  // Completed Task List
-  const showCmplete = () => {
-    setTaskList(showCompletedTask);
-  };
-  const completing = (id) => {
-    const completedList = taskList.find((task) => task.id === id);
-    setShowCompletedTask([...showCompletedTask, completedList]);
-    const removeComplete = taskList.filter((task) => task.id !== id);
-    setTaskList(removeComplete);
-  };
-
-  //   Not Completed Task
-
-  const showNotComplete = () => {
-    setTaskList(showNotCompletedTask);
-  };
-
-  const notCompleting = () => {
-    
-  };
-
   return (
     <>
       <div className="mainContainer">
         <h1 className="title">TODO - LIST</h1>
         <div className="buttonContainer">
           <button onClick={handleAddTaskContainer}>Add Task</button>
-          <button onClick={showCmplete}>Completed</button>
-          <button onClick={showNotComplete}>Not Completed</button>
-          <button>All Tasks</button>
         </div>
         <div className="addTaskContainer" ref={addTaskContainerRef}>
           <form>
@@ -161,13 +134,6 @@ const Master = () => {
                       onClick={() => handleEdit(task)}
                     >
                       Edit
-                    </button>
-                    <button
-                      className="complete"
-                      ref={completeButtonRef}
-                      onClick={() => completing(task.id)}
-                    >
-                      Complete
                     </button>
                     <button
                       className="delete"
